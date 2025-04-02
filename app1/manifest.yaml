@@ -20,9 +20,8 @@ spec:
     spec:
       containers:
       - name: app1
-        image: joindevops006/joindevops:1.0
+        image: joindevops/app1:1.0
 ---
-#clusterip creating service here
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,7 +43,6 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-    # this annotation is useful to keep only ALB under joindevops group. if you don't give this it will create another ALB.
     alb.ingress.kubernetes.io/group.name: joindevops
 spec:
   ingressClassName: alb
