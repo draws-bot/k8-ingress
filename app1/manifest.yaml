@@ -33,12 +33,13 @@ spec:
   ports:
   - protocol: TCP
     port: 80 #service-port
-    targetPort: 80 #target-port
+    targetPort: 8080 #target-port
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app1
+  namespace: expense   # ⚠️ add this if your service is in expense namespace
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -47,13 +48,13 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app1.daws78s.online"                # ALB Rule
+  - host: app1.daws78s.online
     http:
       paths:
-      - pathType: Prefix
-        path: "/"
+      - path: /
+        pathType: Prefix
         backend:
           service:
-            name: app1                      # ALB Target group  it is service name is app1 one got it
+            name: app1
             port:
               number: 80
