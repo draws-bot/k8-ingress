@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: joindevops/app1:1.0
+        image: joindevops006/joindevops:ingress1
 ---
 apiVersion: v1
 kind: Service
@@ -47,13 +47,13 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app1.daws78s.online" # ALB Rule
+  - host: "app1.daws78s.online"                # ALB Rule
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: app1 # ALB Target group
+            name: app1                      # ALB Target group  it is service name is app1 one got it
             port:
               number: 80
