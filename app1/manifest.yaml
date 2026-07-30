@@ -57,3 +57,10 @@ spec:
             name: app1                      # ALB Target group  it is service name is app1 one got it
             port:
               number: 80
+
+
+
+
+
+#app1.daws78s.online rule is created at load balancer to expose to internet u need to create route 53 record 
+#use alias a type apply claasic load balancer with loadbalancer dns name that it 
